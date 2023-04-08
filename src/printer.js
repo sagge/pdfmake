@@ -370,14 +370,14 @@ function renderPages(pages, fontProvider, pdfKitDoc, patterns, progressCallback)
 	pdfKitDoc._pdfMakePages = pages;
 	pdfKitDoc.addPage();
 
-	var totalItems = 0;
-	if (progressCallback) {
-		pages.forEach(function (page) {
-			totalItems += page.items.length;
-		});
-	}
+	// var totalItems = 0;
+	// if (progressCallback) {
+	// 	pages.forEach(function (page) {
+	// 		totalItems += page.items.length;
+	// 	});
+	// }
 
-	var renderedItems = 0;
+	// var renderedItems = 0;
 	progressCallback = progressCallback || function () {
 	};
 
@@ -410,8 +410,8 @@ function renderPages(pages, fontProvider, pdfKitDoc, patterns, progressCallback)
 					endClip(pdfKitDoc);
 					break;
 			}
-			renderedItems++;
-			progressCallback(renderedItems / totalItems);
+			// renderedItems++;
+			// progressCallback(renderedItems / totalItems);
 		}
 		if (page.watermark) {
 			renderWatermark(page, pdfKitDoc);
