@@ -13315,7 +13315,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
 
 /***/ }),
 
-/***/ 25133:
+/***/ 18244:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -51979,7 +51979,7 @@ function simpleEnd(buf) {
 
 /***/ }),
 
-/***/ 55791:
+/***/ 71633:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(a,b){if(true)!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (b),
@@ -67132,7 +67132,7 @@ module.exports = URLBrowserResolver;
 var isFunction = (__webpack_require__(6225).isFunction);
 var isUndefined = (__webpack_require__(6225).isUndefined);
 var isNull = (__webpack_require__(6225).isNull);
-var FileSaver = __webpack_require__(55791);
+var FileSaver = __webpack_require__(71633);
 var saveAs = FileSaver.saveAs;
 
 var defaultClientFonts = {
@@ -70776,7 +70776,7 @@ function _interopDefault(ex) {
 	return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex;
 }
 
-var PdfKit = _interopDefault(__webpack_require__(25133));
+var PdfKit = _interopDefault(__webpack_require__(18244));
 
 function getEngineInstance() {
 	return PdfKit;
@@ -71196,7 +71196,7 @@ function renderPages(pages, fontProvider, pdfKitDoc, patterns, progressCallback)
 					renderVector(item.item, patterns, pdfKitDoc);
 					break;
 				case 'line':
-					renderLine(item.item, item.item.x, item.item.y, patterns, pdfKitDoc, progressCallback, i, item);
+					renderLine(item.item, item.item.x, item.item.y, patterns, pdfKitDoc, progressCallback, i);
 					break;
 				case 'image':
 					renderImage(item.item, item.item.x, item.item.y, pdfKitDoc);
@@ -71239,7 +71239,7 @@ function offsetText(y, inline) {
 	return newY;
 }
 
-function renderLine(line, x, y, patterns, pdfKitDoc, progressCallback, pageNb, item) {
+function renderLine(line, x, y, patterns, pdfKitDoc, progressCallback, pageNb) {
 	function preparePageNodeRefLine(_pageNodeRef, inline) {
 		var newWidth;
 		var diffWidth;
@@ -71316,7 +71316,7 @@ function renderLine(line, x, y, patterns, pdfKitDoc, progressCallback, pageNb, i
 		pdfKitDoc.fontSize(inline.fontSize);
 
 		var shiftedY = offsetText(y + shiftToBaseline, inline);
-		progressCallback(inline, x + inline.x, shiftedY, options, pageNb, item);
+		progressCallback(inline, x + inline.x, shiftedY, options, pageNb);
 		pdfKitDoc.text(inline.text, x + inline.x, shiftedY, options);
 
 		if (inline.linkToPage) {
