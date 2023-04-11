@@ -395,7 +395,7 @@ function renderPages(pages, fontProvider, pdfKitDoc, patterns, progressCallback)
 					renderVector(item.item, patterns, pdfKitDoc);
 					break;
 				case 'line':
-					renderLine(item.item, item.item.x, item.item.y, patterns, pdfKitDoc, progressCallback, i);
+					renderLine(item.item, item.item.x, item.item.y, patterns, pdfKitDoc, progressCallback, i, item);
 					break;
 				case 'image':
 					renderImage(item.item, item.item.x, item.item.y, pdfKitDoc);
@@ -438,7 +438,7 @@ function offsetText(y, inline) {
 	return newY;
 }
 
-function renderLine(line, x, y, patterns, pdfKitDoc, progressCallback, pageNb) {
+function renderLine(line, x, y, patterns, pdfKitDoc, progressCallback, pageNb, item) {
 	function preparePageNodeRefLine(_pageNodeRef, inline) {
 		var newWidth;
 		var diffWidth;
@@ -515,7 +515,7 @@ function renderLine(line, x, y, patterns, pdfKitDoc, progressCallback, pageNb) {
 		pdfKitDoc.fontSize(inline.fontSize);
 
 		var shiftedY = offsetText(y + shiftToBaseline, inline);
-		progressCallback(line, x + inline.x, shiftedY, options, pageNb);
+		progressCallback(inline, x + inline.x, shiftedY, options, pageNb, item);
 		pdfKitDoc.text(inline.text, x + inline.x, shiftedY, options);
 
 		if (inline.linkToPage) {
