@@ -395,7 +395,7 @@ function renderPages(pages, fontProvider, pdfKitDoc, patterns, progressCallback)
 					renderVector(item.item, patterns, pdfKitDoc);
 					break;
 				case 'line':
-					renderLine(item.item, item.item.x, item.item.y, patterns, pdfKitDoc, progressCallback, i+1);
+					renderLine(item.item, item.item.x, item.item.y, patterns, pdfKitDoc, progressCallback, i);
 					break;
 				case 'image':
 					renderImage(item.item, item.item.x, item.item.y, pdfKitDoc);
@@ -515,7 +515,7 @@ function renderLine(line, x, y, patterns, pdfKitDoc, progressCallback, pageNb) {
 		pdfKitDoc.fontSize(inline.fontSize);
 
 		var shiftedY = offsetText(y + shiftToBaseline, inline);
-		progressCallback(inline, x + inline.x, shiftedY, options, pageNb);
+		progressCallback(line, x + inline.x, shiftedY, options, pageNb);
 		pdfKitDoc.text(inline.text, x + inline.x, shiftedY, options);
 
 		if (inline.linkToPage) {
